@@ -1,0 +1,136 @@
+.banner-container {
+  margin-bottom: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  max-height: 300px;
+  position: relative;
+}
+
+.banner-container:hover {
+  transform: scale(1.005);
+}
+
+.banner-full-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
+
+.banner-buy-button {
+  position: absolute;
+  left: 131px;
+  bottom: 85px;
+  background: #9DD458;
+  border-radius: 18px;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 40px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.banner-buy-button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.banner-navigation {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.banner-nav-btn {
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  border: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.banner-nav-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.1);
+}
+
+.prev img {
+  left: 0;
+}
+
+.next img {
+  right: 0;
+}
+
+
+/* адаптивы */
+@media (max-width: 1080px) {
+  .banner-container {
+    max-height: 250px;
+  }
+  
+  .banner-buy-button {
+    left: 100px;
+    bottom: 70px;
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-container {
+    max-height: 200px;
+  }
+  
+  .banner-buy-button {
+    left: 70px;
+    bottom: 50px;
+    padding: 8px 20px;
+    font-size: 12px;
+    border-radius: 15px;
+  }
+  
+  .banner-nav-btn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-container {
+    max-height: 150px;
+  }
+  
+  .banner-buy-button {
+    left: 30px;
+    bottom: 30px;
+    padding: 6px 16px;
+    font-size: 10px;
+    border-radius: 12px;
+  }
+  
+  .banner-nav-btn {
+    width: 25px;
+    height: 25px;
+  }
+} 

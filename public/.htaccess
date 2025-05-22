@@ -1,0 +1,37 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Установка заголовков Content-Type для API-запросов
+    <IfModule mod_headers.c>
+        <FilesMatch "^$">
+            # Для API-запросов принудительно устанавливаем тип контента
+            SetEnvIf Request_URI "^/api/" API_REQUEST
+            Header set Content-Type "application/json" env=API_REQUEST
+            # Отключаем кеширование для API
+            Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0" env=API_REQUEST
+            Header set Pragma "no-cache" env=API_REQUEST
+        </FilesMatch>
+    </IfModule>
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

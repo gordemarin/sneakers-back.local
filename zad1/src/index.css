@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #e7f6ff;
+  --accent-color: #9dd458;
+  --text-color: #000000;
+  --secondary-text: #5c5c5c;
+  --price-color: #000000;
+  --white: #ffffff;
+  --card-bg: #ffffff;
+  --heart-hover: #ff8585;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.content {
+  padding: 40px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--price-color);
+}
+
+.btn {
+  background: var(--accent-color);
+  border-radius: 18px;
+  color: var(--white);
+  font-weight: 600;
+  padding: 12px 30px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.search-input {
+  border: 1px solid #f2f2f2;
+  border-radius: 10px;
+  padding: 13px 15px 13px 45px;
+  font-size: 14px;
+  width: 250px;
+  background: url('/Vector-2.svg') no-repeat 15px center;
+}
