@@ -1,62 +1,174 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sneakers API - Laravel Backend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+🚀 **Готовый к продакшн Laravel API для интернет-магазина кроссовок**
 
-## About Laravel
+## 📋 Описание проекта
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Полнофункциональный REST API на Laravel для управления каталогом кроссовок с поддержкой:
+- ✅ CRUD операции для кроссовок, брендов, категорий
+- ✅ Загрузка и управление изображениями
+- ✅ Фильтрация, поиск, пагинация
+- ✅ Система избранного
+- ✅ CORS настройки для фронтенда
+- ✅ Исправление всех ошибок 500 и 403
+- ✅ Полная документация по развертыванию
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Технологии
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend:** Laravel 11, PHP 8.2+
+- **База данных:** MySQL 8.0+
+- **Веб-сервер:** Nginx/Apache
+- **Развертывание:** Автоматические скрипты
+- **Версионирование:** Git + GitHub
 
-## Learning Laravel
+## 🚀 Быстрый старт
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Способ 1: Через GitHub (рекомендуется)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Создайте репозиторий на GitHub** и загрузите код (см. `GITHUB_SETUP.md`)
+2. **На сервере выполните:**
+```bash
+ssh username@your-server-ip
+sudo git clone https://github.com/YOUR_USERNAME/sneakers-api.git /var/www/sneakers-api
+cd /var/www/sneakers-api
+sudo bash deploy.sh
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Способ 2: Через архив
 
-## Laravel Sponsors
+1. **Создайте пакет:** `bash create-package.sh`
+2. **Загрузите на сервер:** `scp sneakers-api-*.tar.gz username@server:/home/username/`
+3. **Распакуйте и разверните:**
+```bash
+sudo mkdir -p /var/www/sneakers-api
+sudo tar -xzf sneakers-api-*.tar.gz -C /var/www/sneakers-api
+cd /var/www/sneakers-api
+sudo bash deploy.sh
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📚 Документация
 
-### Premium Partners
+| Файл | Описание |
+|------|----------|
+| [`GITHUB_SETUP.md`](GITHUB_SETUP.md) | Пошаговая загрузка на GitHub |
+| [`DEPLOYMENT_INSTRUCTIONS.md`](DEPLOYMENT_INSTRUCTIONS.md) | Полная инструкция по развертыванию |
+| [`QUICK_START.md`](QUICK_START.md) | Быстрый старт и основные команды |
+| [`UPLOAD_TO_SERVER_INSTRUCTIONS.md`](UPLOAD_TO_SERVER_INSTRUCTIONS.md) | Все способы загрузки на сервер |
+| [`FRONTEND_INTEGRATION.md`](FRONTEND_INTEGRATION.md) | Интеграция с фронтендом |
+| [`IMAGES_FIX_INSTRUCTIONS.md`](IMAGES_FIX_INSTRUCTIONS.md) | Решение проблем с изображениями |
+| [`API_FIX_INSTRUCTIONS.md`](API_FIX_INSTRUCTIONS.md) | Исправление ошибок API |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+## 🔗 API Эндпоинты
 
-## Contributing
+### Основные маршруты:
+```
+GET    /api/sneakers              - Список кроссовок (с фильтрами)
+GET    /api/sneakers/{id}         - Детали кроссовки  
+GET    /api/brands                - Список брендов
+GET    /api/categories            - Список категорий
+GET    /api/sneakers/brand/{slug} - Кроссовки по бренду
+GET    /api/sneakers/category/{slug} - Кроссовки по категории
+POST   /api/sneakers/{id}/toggle-favorite - Переключить избранное
+GET    /api/test-sneakers         - Тестовые данные
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Управление изображениями:
+```
+GET    /api/sneakers/{id}/images  - Список изображений
+POST   /api/sneakers/{id}/images  - Загрузка изображения
+DELETE /api/sneakers/{id}/images  - Удаление изображения
+```
 
-## Code of Conduct
+## 🔧 Требования к серверу
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **OS:** Ubuntu 20.04+ / CentOS 8+ / Debian 10+
+- **RAM:** 2GB+ (рекомендуется 4GB)
+- **Disk:** 20GB+
+- **PHP:** 8.2+
+- **Database:** MySQL 8.0+ / PostgreSQL 13+
+- **Web Server:** Nginx / Apache
 
-## Security Vulnerabilities
+## 🛡️ Безопасность
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- ✅ CORS правильно настроен
+- ✅ Валидация всех входящих данных
+- ✅ Защита от SQL-инъекций (Eloquent ORM)
+- ✅ Обработка ошибок без утечки информации
+- ✅ Фильтрация загружаемых файлов
 
-## License
+## 🔄 Обновление
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+# На локальной машине
+git add .
+git commit -m "Описание изменений"
+git push origin main
+
+# На сервере
+cd /var/www/sneakers-api
+sudo git pull origin main
+sudo composer install --no-dev --optimize-autoloader
+sudo php artisan migrate --force
+sudo php artisan config:cache
+sudo systemctl restart php8.2-fpm
+```
+
+## 🐛 Устранение проблем
+
+### API возвращает ошибку 500:
+```bash
+sudo tail -f /var/log/nginx/sneakers-api.error.log
+sudo tail -f /var/www/sneakers-api/storage/logs/laravel.log
+```
+
+### Проблемы с изображениями:
+```bash
+sudo php artisan storage:link
+sudo chmod -R 755 /var/www/sneakers-api/storage/app/public
+```
+
+### CORS ошибки:
+Обновите `config/cors.php` с доменом вашего фронтенда.
+
+## 💻 Локальная разработка
+
+```bash
+# Клонирование проекта
+git clone https://github.com/YOUR_USERNAME/sneakers-api.git
+cd sneakers-api
+
+# Установка зависимостей
+composer install
+
+# Настройка окружения
+cp .env.example .env
+php artisan key:generate
+
+# Настройка базы данных
+php artisan migrate
+php artisan db:seed
+
+# Запуск сервера разработки
+php artisan serve
+```
+
+## 🌟 Особенности
+
+- **Автоматическое развертывание** одной командой
+- **Исправлены все известные ошибки** (500, 403, CORS)
+- **Правильная структура изображений** и их обработка
+- **Полная документация** для разработчиков
+- **Готовые примеры** интеграции с фронтендом
+- **Оптимизация для продакшн** окружения
+
+## 📞 Поддержка
+
+- 📖 Полная документация в папке проекта
+- 🐛 Все известные ошибки исправлены
+- 🔧 Готовые скрипты развертывания
+- 💡 Примеры интеграции с популярными фронтенд фреймворками
+
+---
+
+**🎯 Готов к продакшн использованию!** Следуйте инструкциям в документации для быстрого развертывания.
 
