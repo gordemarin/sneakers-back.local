@@ -181,3 +181,8 @@ sudo tail -f /var/www/sneakers-api/storage/logs/laravel.log
 1. Укажите версию вашего дистрибутива: `cat /etc/os-release`
 2. Приложите полный вывод ошибки
 3. Проверьте логи указанными выше командами 
+
+# На сервере выполните:
+sudo git clone https://github.com/YOUR_USERNAME/sneakers-api.git /var/www/sneakers-api
+cd /var/www/sneakers-api
+sudo bash deploy.sh 
