@@ -66,9 +66,11 @@ apt install -y software-properties-common curl wget unzip git
 log "Установка PHP 8.2 и расширений..."
 add-apt-repository ppa:ondrej/php -y
 apt update
+
+# Исправленный список пакетов (убран php8.2-json)
 apt install -y php8.2 php8.2-fpm php8.2-mysql php8.2-xml php8.2-mbstring \
-php8.2-curl php8.2-zip php8.2-bcmath php8.2-json php8.2-gd php8.2-intl \
-php8.2-sqlite3 php8.2-tokenizer php8.2-fileinfo
+php8.2-curl php8.2-zip php8.2-bcmath php8.2-gd php8.2-intl \
+php8.2-sqlite3 php8.2-tokenizer php8.2-fileinfo php8.2-dom
 
 # Проверка установки PHP
 if check_command php; then
